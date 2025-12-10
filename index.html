@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Code: Software Engineering with Generative AI Agents</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Password Protection Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-modal">
+            <div class="login-icon">🔐</div>
+            <h2>Course Access</h2>
+            <p>Enter the password to access the course content</p>
+            <form id="loginForm">
+                <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off" required>
+                <button type="submit" class="login-btn">Unlock Course</button>
+            </form>
+            <p id="loginError" class="login-error"></p>
+        </div>
+    </div>
+
+    <div class="container" id="mainContent" style="display: none;">
+        <header>
+            <h1>Claude Code: Software Engineering with Generative AI Agents</h1>
+            <div class="progress-bar">
+                <div class="progress-fill" id="overallProgress"></div>
+            </div>
+            <p class="progress-text"><span id="completedCount">0</span>/20 videos completed (<span id="progressPercent">0</span>%)</p>
+        </header>
+
+        <main>
+            <div class="video-player-section">
+                <div class="video-container">
+                    <video id="videoPlayer" controls>
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-info">
+                    <h2 id="currentVideoTitle">Select a video to begin</h2>
+                    <p id="currentVideoModule"></p>
+                    <div class="video-controls">
+                        <button id="prevBtn" class="nav-btn" disabled>Previous</button>
+                        <button id="markCompleteBtn" class="complete-btn">Mark as Complete</button>
+                        <button id="nextBtn" class="nav-btn">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-content">
+                <div class="module" data-module="1">
+                    <div class="module-header">
+                        <h3>Module 1: Scaling Up Software Engineering with Claude Code & Generative AI</h3>
+                        <span class="module-progress">0/2</span>
+                    </div>
+                    <ul class="video-list">
+                        <li class="video-item" data-video="1">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">01</span>
+                            <span class="video-title">Introduction to Claude Code & Software Engineering with AI Agents</span>
+                            <span class="video-duration">7 min</span>
+                        </li>
+                        <li class="video-item" data-video="2">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">02</span>
+                            <span class="video-title">1000X Improvement in Software Engineering Productivity with Big Prompts</span>
+                            <span class="video-duration">12 min</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="module" data-module="2">
+                    <div class="module-header">
+                        <h3>Module 2: Leveraging the Software Engineering Advantages of Claude Code</h3>
+                        <span class="module-progress">0/3</span>
+                    </div>
+                    <ul class="video-list">
+                        <li class="video-item" data-video="3">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">03</span>
+                            <span class="video-title">One Software Engineer to Another: Let's Talk About the Fear</span>
+                            <span class="video-duration">3 min</span>
+                        </li>
+                        <li class="video-item" data-video="4">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">04</span>
+                            <span class="video-title">AI Labor: Claude Code is an AI Development Team</span>
+                            <span class="video-duration">5 min</span>
+                        </li>
+                        <li class="video-item" data-video="5">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">05</span>
+                            <span class="video-title">The Best of N Pattern: Leverage AI Labor Cost Advantages</span>
+                            <span class="video-duration">8 min</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="module" data-module="3">
+                    <div class="module-header">
+                        <h3>Module 3: Generative AI, Claude Code, & Code Quality</h3>
+                        <span class="module-progress">0/6</span>
+                    </div>
+                    <ul class="video-list">
+                        <li class="video-item" data-video="6">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">06</span>
+                            <span class="video-title">Can AI Judge Code Quality?</span>
+                            <span class="video-duration">8 min</span>
+                        </li>
+                        <li class="video-item" data-video="7">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">07</span>
+                            <span class="video-title">Does AI Labor Understand Design Principles?</span>
+                            <span class="video-duration">4 min</span>
+                        </li>
+                        <li class="video-item" data-video="8">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">08</span>
+                            <span class="video-title">Chat, Craft, Scale: Spend More Time Designing & Innovating</span>
+                            <span class="video-duration">2 min</span>
+                        </li>
+                        <li class="video-item" data-video="9">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">09</span>
+                            <span class="video-title">Chat: Craft and Explore Requirements & Options</span>
+                            <span class="video-duration">4 min</span>
+                        </li>
+                        <li class="video-item" data-video="10">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">10</span>
+                            <span class="video-title">Chat: Rapid Prototyping & Personas</span>
+                            <span class="video-duration">7 min</span>
+                        </li>
+                        <li class="video-item" data-video="11">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">11</span>
+                            <span class="video-title">Craft: Constraints & Prompts for Claude Code</span>
+                            <span class="video-duration">9 min</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="module" data-module="4">
+                    <div class="module-header">
+                        <h3>Module 4: Building Process & Context in Claude Code</h3>
+                        <span class="module-progress">0/3</span>
+                    </div>
+                    <ul class="video-list">
+                        <li class="video-item" data-video="12">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">12</span>
+                            <span class="video-title">Global Persistent Context: CLAUDE.md</span>
+                            <span class="video-duration">10 min</span>
+                        </li>
+                        <li class="video-item" data-video="13">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">13</span>
+                            <span class="video-title">Reusable Targeted Context & Process: Claude Code Commands</span>
+                            <span class="video-duration">8 min</span>
+                        </li>
+                        <li class="video-item" data-video="14">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">14</span>
+                            <span class="video-title">In-Context Learning: Teaching with Examples</span>
+                            <span class="video-duration">7 min</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="module" data-module="5">
+                    <div class="module-header">
+                        <h3>Module 5: Version Control & Parallel Development with Claude Code</h3>
+                        <span class="module-progress">0/1</span>
+                    </div>
+                    <ul class="video-list">
+                        <li class="video-item" data-video="15">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">15</span>
+                            <span class="video-title">Claude Code, Version Control, & Git Branches</span>
+                            <span class="video-duration">5 min</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="module" data-module="6">
+                    <div class="module-header">
+                        <h3>Module 6: Improving Claude Code Scalability & Reasoning</h3>
+                        <span class="module-progress">0/4</span>
+                    </div>
+                    <ul class="video-list">
+                        <li class="video-item" data-video="16">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">16</span>
+                            <span class="video-title">Being Claude Code's Hands, Eyes, and Ears</span>
+                            <span class="video-duration">7 min</span>
+                        </li>
+                        <li class="video-item" data-video="17">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">17</span>
+                            <span class="video-title">Ensuring Claude Code Checks Its Own Work</span>
+                            <span class="video-duration">4 min</span>
+                        </li>
+                        <li class="video-item" data-video="18">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">18</span>
+                            <span class="video-title">Software Design, Token Limits, and Maintainability</span>
+                            <span class="video-duration">7 min</span>
+                        </li>
+                        <li class="video-item" data-video="19">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">19</span>
+                            <span class="video-title">Project Structure and File Naming is Critical Context for Claude Code Scalability</span>
+                            <span class="video-duration">8 min</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="module" data-module="7">
+                    <div class="module-header">
+                        <h3>Module 7: Multimodal Prompting & Process</h3>
+                        <span class="module-progress">0/1</span>
+                    </div>
+                    <ul class="video-list">
+                        <li class="video-item" data-video="20">
+                            <span class="video-checkbox"></span>
+                            <span class="video-number">20</span>
+                            <span class="video-title">Start By Fixing the Process & Context, Not the Code</span>
+                            <span class="video-duration">4 min</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <button id="resetProgress" class="reset-btn">Reset Progress</button>
+            <button id="logoutBtn" class="reset-btn logout-btn">Logout</button>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
